@@ -14,10 +14,10 @@ def is_odd(a_number):
 
     e.g. 4 % 2 = 0
         13 %12 = 1
-         3 % 2 = 1
+        3 % 2 = 1
 
     So if a_number modulo two is zero, then it's even.
-    """
+    
     return None
 
 
