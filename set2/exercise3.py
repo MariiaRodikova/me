@@ -8,7 +8,7 @@ Modify each function until the tests pass.
 
 
 def is_odd(a_number):
-    if a_number % 2 is 0 :
+    if a_number % 2 == 0 :
         print("True")
     elif a_number % 2 != 0:
         print("False")
@@ -40,13 +40,14 @@ def fix_it(moves=True, should_move=True):
     As an extra challenge, see if you can get that down to three. return None
     """
     if moves==True:
-        if should_move!=True:
-            return "Duct Tape"
+        if should_move==False:
+            return "WD-40"
     elif moves==False:
         if should_move==True:
-            return "WD-40"
-    elif (moves==False and should_move==False) or (moves==True and should_move==True):
-        return "No problem"
+            return "Duct Tape"
+    while (moves==True and should_move==True) or (moves==False and should_move==False):
+        return "No Problem"
+    # ...
 
 
 
@@ -72,6 +73,7 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
+    loops_1a = []
     for i in range(10):
         loops_1a.append('*')
     return loops_1a
@@ -87,9 +89,11 @@ def loops_1c(number_of_items=5, symbol="#"):
     Remember that you're being passed arguments here. Don't hard code the number
     or the symbol, let it be whatever it wants to be.
     """
-    number_of_items = []
+    # number_of_items = []
+    # int(number_of_items)
+    loops_1c = []
     for i in range(number_of_items):
-        i.append(symbol)
+        loops_1c.append(symbol)
     return number_of_items
 
 
