@@ -8,22 +8,25 @@ Modify each function until the tests pass.
 
 
 def is_odd(a_number):
+    if a_number % 2 is 0 :
+        print("True")
+    elif a_number % 2 != 0:
+        print("False")
     """Return True if a_number is odd, and False if a_number is even.
 
     Look into modulo division using the '%' operator as one way of doing this.
 
     e.g. 4 % 2 = 0
-        13 %12 = 1
+        13 % 12 = 1
         3 % 2 = 1
 
     So if a_number modulo two is zero, then it's even.
     
     return None
 
-
+"""
 def fix_it(moves=True, should_move=True):
-    """Decide what to do.
-
+    """
     Using the engineering flowchart (in week2 folder of the CODE1161-2019
     repo engineeringFlowchart.png) for the rules, return the apropriate
     response to the input parameters.
@@ -34,22 +37,32 @@ def fix_it(moves=True, should_move=True):
     "No Problem"
 
     Most people write this function with 4 return statements.
-    As an extra challenge, see if you can get that down to three.
+    As an extra challenge, see if you can get that down to three. return None
     """
-    return None
+    if moves==True:
+        if should_move!=True:
+            return "Duct Tape"
+    elif moves==False:
+        if should_move==True:
+            return "WD-40"
+    elif (moves==False and should_move==False) or (moves==True and should_move==True):
+        return "No problem"
+
 
 
 def loops_preview():
-    """Make 8 poops.
+    cl = []
+    for i in range(10):
+        cl.append("💩")
+    return cl
 
-    Using a for loop
-    return a list of 8 items, each one a string with exacly one 💩 in it.
-    E.g.: ['💩', '💩', '💩', '💩', '💩', '💩', '💩', '💩']
-    """
-    choc_list = []
-    for i in range(8):
-        choc_list.append("💩")
-    return choc_list
+        # choc_list = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "act not the 9th"]
+        # needed_list = ["💩"]
+        # for i in range(choc_list):
+        #   return i + needed_list
+        # choc_list.append("💩")
+        # return "the" + choc_list
+
 
 
 def loops_1a():
@@ -59,7 +72,9 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    return None
+    for i in range(10):
+        loops_1a.append('*')
+    return loops_1a
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -72,7 +87,11 @@ def loops_1c(number_of_items=5, symbol="#"):
     Remember that you're being passed arguments here. Don't hard code the number
     or the symbol, let it be whatever it wants to be.
     """
-    return None
+    number_of_items = []
+    for i in range(number_of_items):
+        i.append(symbol)
+    return number_of_items
+
 
 
 def loops_2_preview():
@@ -85,7 +104,7 @@ def loops_2_preview():
             ['💩', '💩', '💩', '💩'],
             ['💩', '💩', '💩', '💩'],
             ['💩', '💩', '💩', '💩'],
-          ]
+        ]
     """
     field = []
     for i in range(4):
@@ -112,9 +131,15 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
-          ]
+            ]
     """
-    return None
+    star_1 =[]
+    for i in range(10):
+        star_2 = []
+        for j in range(10):
+            star_2.append('*')
+        star_1.append(star_2)
+    return star_1
 
 
 def loops_3():
@@ -136,9 +161,19 @@ def loops_3():
     remember that range(10) produces a list of numbers from 0...9
     So for every step produced by `for i in range(10):` i is a different number
     TIP: notice that this needs to to return strings of numbers,
-         so call str(number) to cast.
+            so call str(number) to cast.
     """
-    return None
+    l1 = []
+    for i in range(10):
+        l2 = []
+        for j in range(10):
+            l2.append(i)
+        l1.append(str(l2))
+    print(l1)   
+    return l1
+            
+
+
 
 
 def loops_4():
@@ -146,19 +181,38 @@ def loops_4():
 
     Return this:
     [
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+    l11 = []
+    for i in range(10):
+        l22 = []
+        for j in range(10):
+            l22.append(j)
+        l11.append(str(l22))
+    print(l11)   
+    return l11
+    # another way is
+    # l11 = [] -- make a list
+    # for i in range(10): -- 10 t.
+    #     l11.append(range(10)) -- add to the list items in range from 0 to 9
+        
+        # l1 = []
+        # for i in range(10):
+        #l2 = []
+        #for j in range(10):
+        #   l2.append(range(10))
+            
+        #l1.append(l2)
 
 
 def loops_5():
@@ -166,16 +220,16 @@ def loops_5():
 
     Return this:
     [
-      ["(i0, j0)", "(i0, j1)", "(i0, j2)", "(i0, j3)", "(i0, j4)"],
-      ["(i1, j0)", "(i1, j1)", "(i1, j2)", "(i1, j3)", "(i1, j4)"],
-      ["(i2, j0)", "(i2, j1)", "(i2, j2)", "(i2, j3)", "(i2, j4)"],
-      ["(i3, j0)", "(i3, j1)", "(i3, j2)", "(i3, j3)", "(i3, j4)"],
-      ["(i4, j0)", "(i4, j1)", "(i4, j2)", "(i4, j3)", "(i4, j4)"],
-      ["(i5, j0)", "(i5, j1)", "(i5, j2)", "(i5, j3)", "(i5, j4)"],
-      ["(i6, j0)", "(i6, j1)", "(i6, j2)", "(i6, j3)", "(i6, j4)"],
-      ["(i7, j0)", "(i7, j1)", "(i7, j2)", "(i7, j3)", "(i7, j4)"],
-      ["(i8, j0)", "(i8, j1)", "(i8, j2)", "(i8, j3)", "(i8, j4)"],
-      ["(i9, j0)", "(i9, j1)", "(i9, j2)", "(i9, j3)", "(i9, j4)"]
+        ["(i0, j0)", "(i0, j1)", "(i0, j2)", "(i0, j3)", "(i0, j4)"],
+        ["(i1, j0)", "(i1, j1)", "(i1, j2)", "(i1, j3)", "(i1, j4)"],
+        ["(i2, j0)", "(i2, j1)", "(i2, j2)", "(i2, j3)", "(i2, j4)"],
+        ["(i3, j0)", "(i3, j1)", "(i3, j2)", "(i3, j3)", "(i3, j4)"],
+        ["(i4, j0)", "(i4, j1)", "(i4, j2)", "(i4, j3)", "(i4, j4)"],
+        ["(i5, j0)", "(i5, j1)", "(i5, j2)", "(i5, j3)", "(i5, j4)"],
+        ["(i6, j0)", "(i6, j1)", "(i6, j2)", "(i6, j3)", "(i6, j4)"],
+        ["(i7, j0)", "(i7, j1)", "(i7, j2)", "(i7, j3)", "(i7, j4)"],
+        ["(i8, j0)", "(i8, j1)", "(i8, j2)", "(i8, j3)", "(i8, j4)"],
+        ["(i9, j0)", "(i9, j1)", "(i9, j2)", "(i9, j3)", "(i9, j4)"]
     ]
 
     TIP:
@@ -188,7 +242,16 @@ def loops_5():
         f"There are {num_bottles} green bottles"
     you'll come to see the pros and cons of each over time.
     """
-    return None
+    l111 = []
+    for i in range(10):
+        l222 = []
+        for j in range(5):
+        #    l222.append("(i" + str(i) + "," + " " + "j" + str(j) + ")")
+            l222.append("(i{}, j{})".format(i, j))
+        l111.append(l222)
+    print(l111)
+    # are there 2 or 3 lists?
+    # 1 big list + 10 lists inside + tuples???
 
 
 def loops_6():
@@ -196,22 +259,28 @@ def loops_6():
 
     Return this:
     [
-      ['0'],
-      ['0', '1'],
-      ['0', '1', '2'],
-      ['0', '1', '2', '3'],
-      ['0', '1', '2', '3', '4'],
-      ['0', '1', '2', '3', '4', '5'],
-      ['0', '1', '2', '3', '4', '5', '6'],
-      ['0', '1', '2', '3', '4', '5', '6', '7'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        ['0'],
+        ['0', '1'],
+        ['0', '1', '2'],
+        ['0', '1', '2', '3'],
+        ['0', '1', '2', '3', '4'],
+        ['0', '1', '2', '3', '4', '5'],
+        ['0', '1', '2', '3', '4', '5', '6'],
+        ['0', '1', '2', '3', '4', '5', '6', '7'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8'],
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     You don't have to use a literal number in the range function.
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+    l6 = []
+    for i in range(10):
+        l7=[]
+        for j in range(i + 1):
+            l7.append(j)
+        l6.append(l7)
+    return l6
 
 
 def loops_7():
@@ -235,7 +304,27 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    return None
+    l8 = []
+    for i in range(5):
+        l9 = []
+        starr = '*'
+        spacee = ' '
+        for j in range(9):
+            l9.append(spacee*(5 - i) + starr*(9 - j) + spacee*(5 - i))
+        l8.append(l9)
+    return l8
+            # print(spacee*(9 - j) + starr + spacee* ) or something like that?
+            # should i use indexation within a list?
+            # print(spacee*4 + starr + spacee*4)
+            # print(spacee*3 + starr*3 + spacee*3)
+            # print(spacee*2 + starr*5 + spacee*2)
+            # print(spacee*1 + starr*7 + spacee*1)
+            # print(spacee*0 + starr*9 + spacee*0)
+            # l9.append(spacee*(i - 1) + starr + spacee*(i - 1))
+            # l9.append(spacee*(i - 2) + starr*3 + spacee*(i - 2))
+            # l9.append(spacee*(i - 3) + starr*5 + spacee*(i - 3))
+            # l9.append(spacee*(i - 4) + starr*7 + spacee*(i - 4))
+            # l9.append(spacee*(i - 5) + starr*9 + spacee*(i - 5))
 
 
 if __name__ == "__main__":
