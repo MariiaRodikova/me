@@ -27,7 +27,7 @@ def is_odd(a_number):
         return False
 
 """
-def fix_it(moves=True, should_move=True):
+def fix_it(moves, should_move):
     """
     Using the engineering flowchart (in week2 folder of the CODE1161-2019
     repo engineeringFlowchart.png) for the rules, return the apropriate
@@ -43,12 +43,17 @@ def fix_it(moves=True, should_move=True):
     """
     if moves==True:
         if should_move==False:
-            return "WD-40"
+            return "Duct Tape"
+        else:
+            return "No Problem"
     elif moves==False:
         if should_move==True:
-            return "Duct Tape"
-    while (moves==True and should_move==True) or (moves==False and should_move==False):
-        return "No Problem"
+            return "WD-40"
+        else:
+            return "No Problem"
+
+    #elif (moves == True + should_move == True) or (moves==False and should_move==False):
+    #    return "No Problem"
     # ...
 
 
