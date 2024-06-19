@@ -9,9 +9,9 @@ Modify each function until the tests pass.
 
 def is_odd(a_number):
     if a_number % 2 == 0 :
-        print("True")
-    elif a_number % 2 != 0:
-        print("False")
+        return False
+    else:
+        return True
     """Return True if a_number is odd, and False if a_number is even.
 
     Look into modulo division using the '%' operator as one way of doing this.
@@ -21,8 +21,10 @@ def is_odd(a_number):
         3 % 2 = 1
 
     So if a_number modulo two is zero, then it's even.
-    
-    return None
+    if a_number%2 == 0 :
+        return True
+    else:
+        return False
 
 """
 def fix_it(moves=True, should_move=True):
@@ -68,7 +70,7 @@ def loops_preview():
 
 def loops_1a():
     """Make 10 stars.
-
+    
     Using a for loop
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
@@ -80,6 +82,10 @@ def loops_1a():
 
 
 def loops_1c(number_of_items=5, symbol="#"):
+    loops_1c = []
+    for i in range(number_of_items):
+        loops_1c.append(symbol)
+    return number_of_items
     """Respond to variables.
 
     Return a list of number_of_items items, each one a
@@ -147,6 +153,14 @@ def loops_2():
 
 
 def loops_3():
+    l1 = []
+    for i in range(10):
+        l2 = []
+        for j in range(10):
+            l2.append(str(i))
+        l1.append(l2)
+    print(l1)   
+    return l1
     """Make a rising block of numbers.
 
     Return this:
@@ -171,8 +185,8 @@ def loops_3():
     for i in range(10):
         l2 = []
         for j in range(10):
-            l2.append(i)
-        l1.append(str(l2))
+            l2.append(str(j))
+        l1.append(l2)
     print(l1)   
     return l1
             
@@ -181,7 +195,16 @@ def loops_3():
 
 
 def loops_4():
+    l11 = []
+    for i in range(10):
+        l22 = []
+        for j in range(10):
+            l22.append(str(j))
+        l11.append(l22)
+    print(l11)   
+    return l11
     """Make a block of numbers that rises left to right.
+
 
     Return this:
     [
@@ -220,6 +243,15 @@ def loops_4():
 
 
 def loops_5():
+    l111 = []
+    for i in range(10):
+        l222 = []
+        for j in range(5):
+        #    l222.append("(i" + str(i) + "," + " " + "j" + str(j) + ")")
+            l222.append("(i{}, j{})".format(i, j))
+        l111.append(l222)
+    print(l111)
+    return l111
     """Make the coordinates of the block.
 
     Return this:
@@ -259,6 +291,13 @@ def loops_5():
 
 
 def loops_6():
+    l6 = []
+    for i in range(10):
+        l7=[]
+        for j in range(i + 1):
+            l7.append(str(j))
+        l6.append(l7)
+    return l6
     """Make a wedge of numbers.
 
     Return this:
@@ -288,6 +327,15 @@ def loops_6():
 
 
 def loops_7():
+    l8 = []
+    for i in range(5):
+        l9 = []
+        starr = '*'
+        spacee = ' '
+        for j in range(9):
+            l9.append(spacee*(5 - i) + starr*(9 - j) + spacee*(5 - i))
+        l8.append(l9)
+    return l8
     """Make a pyramid.
 
     Return this:
