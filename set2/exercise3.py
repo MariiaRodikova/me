@@ -328,13 +328,12 @@ def loops_6():
 
 def loops_7():
     l8 = []
+    starr = ['*']
+    spacee = [' ']
     for i in range(5):
-        l9 = []
-        starr = '*'
-        spacee = ' '
-        for j in range(9):
-            l9.append(spacee*(5 - i) + starr*(9 - j) + spacee*(5 - i))
-        l8.append(l9)
+        #    if spacee < i:
+        row = spacee*(4 - i) + starr*(2*i + 1) + spacee*(4 - i)
+        l8.append(row)
     return l8
     """Make a pyramid.
 
