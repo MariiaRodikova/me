@@ -90,7 +90,7 @@ def loops_1c(number_of_items=5, symbol="#"):
     loops_1c = []
     for i in range(number_of_items):
         loops_1c.append(symbol)
-    return number_of_items
+    return loops_1c
     """Respond to variables.
 
     Return a list of number_of_items items, each one a
