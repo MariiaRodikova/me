@@ -5,8 +5,12 @@ Modify each function until the tests pass.
 """
 
 
-def loop_ranger(start, stop=None, step=1):
+def loop_ranger(start, stop, step=1):
+    for i in range(start, stop, 1):
+        return i
     """Return a list of numbers between start and stop in steps of step.
+    # for i in range(start, stop, 1):
+    #    return i
 
     Using a while loop make a list of numbers that goes from the start number up
     to, but not including, the stop number, in increments of step. E.g.:
@@ -17,44 +21,74 @@ def loop_ranger(start, stop=None, step=1):
     Look up for how range() works in the python docs. You could  answer this
     with just the range function, but we'd like you to do it the long way.
     """
-    return None
+    #while start<stop:
+    #    while  start % 2 != 0:
+    #        return start + 2
+    # for i in range(start, stop, 1):
+    #   return i
+
 
 
 def two_step_ranger(start, stop):
+    for i in range(start, stop, 2):
+        return i
     """Make a range that steps by 2.
+    for i in range(start, stop, 2):
+        return i
 
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
 
     You can either reuse loop_ranger, or the range function that in the standard library
     """
-    return None
+    #for i in range(start, stop, 2):
+    #    return i
 
 
 def stubborn_asker(low, high):
+    what_is_in_input = int(input())
+    while low < what_is_in_input < high:
+        print ("OK, it is")
     """Ask for a number between low and high until actually given one.
+    what_is_in_input = int(input())
+    while low < what_is_in_input < high:
+        print ("OK, it is")
 
     Ask for a number, and if the response is outside the bounds keep asking
     until you get a number that you think is OK
 
     Look up the docs for a function called "input"
     """
-    return None
+    #what_is_in_input = int(input())
+    #while low < what_is_in_input < high:
+    #    print ("OK, it is")
+
 
 
 def not_number_rejector(message):
+    number_is = input()
+    if number_is is not int:
+        number_is = input()
+    elif number_is is int:
+        return number_is
     """Ask for a number repeatedly until actually given one.
-
+    # .
     Ask for a number, and if the response is actually NOT a number
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    return None
+    # .
 
 
 def super_asker(low, high):
+    new_number = input()
+    if new_number is int:
+        if low < new_number and new_number < high:
+            print("OK")
+    elif new_number is not int:
+        new_number = input()
     """Robust asking function.
-
+    
     Combine what you learnt from stubborn_asker and not_number_rejector
     to make a function that does it all!
     """
