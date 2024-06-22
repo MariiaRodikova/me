@@ -46,8 +46,8 @@ def two_step_ranger(start, stop):
 
 
 def stubborn_asker(low, high):
-    what_is_in_input = input()
-    int(what_is_in_input)
+    what_is_in_input = int(input())
+    # or int(what_is_in_input)
     if low < what_is_in_input < high:
         print ("OK, it is")
     while what_is_in_input is not int:
