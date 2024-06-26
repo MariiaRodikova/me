@@ -7,29 +7,56 @@ import random
 
 
 def advancedGuessingGame():
-    """Play a guessing game with a user.
+    print("You are going to guess a number berween from_")
+    lower_bound = input()
+    while lower_bound != int:
+        print("Is it what's on your mind? Ok, but we are trying to play a game now, so please give me a number.")
+        lower_bound = input()
+    print("Awesome! Then, what will be the higher bound?")
+    higher_bound = input()
+    while higher_bound != int:
+        print("Is it what's on your mind? Ok, but we are trying to play a game now, so please give me a number.")
+        higher_bound = input()
+    int(lower_bound)
+    int(higher_bound)
+    actualNumber = random.randint(lower_bound, higher_bound)
+    guessed = False
+    while not guessed:
+        users_guess = int(input("Now, your guess: "))
+        print(f'Ok, so far you think it was {users_guess}')
+        if users_guess == actualNumber:
+            print("Why are you so lucky?")
+        elif users_guess < actualNumber:
+            print("Well, it's a bit bigger.")
+            users_guess = int(input("Now, your new guess: "))
+        elif users_guess > actualNumber:
+            print("Well, it's smaller. Try again.")
+            
 
-    The exercise here is to rewrite the exampleGuessingGame() function
-    from exercise 3, but to allow for:
-    * a lower bound to be entered, e.g. guess numbers between 10 and 20
-    * ask for a better input if the user gives a non integer value anywhere.
-      I.e. throw away inputs like "ten" or "8!" but instead of crashing
-      ask for another value.
-    * chastise them if they pick a number outside the bounds.
-    * see if you can find the other failure modes.
-      There are three that I can think of. (They are tested for.)
 
-    NOTE: whilst you CAN write this from scratch, and it'd be good for you to
-    be able to eventually, it'd be better to take the code from exercise 2 and
-    merge it with code from excercise 1.
-    You can refactor a bit, you should refactor a bit! Don't put the code all
-    inside this function, think about reusable chunks of code that you can call
-    in several places.
-    Remember to think modular. Try to keep your functions small and single
-    purpose if you can!
-    """
 
-    return "You got it!"
+    #"Play a guessing game with a user.
+
+    #The exercise here is to rewrite the exampleGuessingGame() function
+    #from exercise 3, but to allow for:
+    #* a lower bound to be entered, e.g. guess numbers between 10 and 20
+    #* ask for a better input if the user gives a non integer value anywhere.
+    # I.e. throw away inputs like "ten" or "8!" but instead of crashing
+    #ask for another value.
+    #chastise them if they pick a number outside the bounds.
+    #see if you can find the other failure modes.
+      #There are three that I can think of. (They are tested for.)
+
+    #NOTE: whilst you CAN write this from scratch, and it'd be good for you to
+    #be able to eventually, it'd be better to take the code from exercise 2 and
+    #merge it with code from excercise 1.
+    #You can refactor a bit, you should refactor a bit! Don't put the code all
+    #inside this function, think about reusable chunks of code that you can call
+    #in several places.
+    #Remember to think modular. Try to keep your functions small and single
+    #purpose if you can!
+    
+  return "You got it!"
     # the tests are looking for the exact string "You got it!". Don't modify that!
 
 
