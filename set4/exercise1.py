@@ -22,6 +22,9 @@ if LOCAL != CWD:
 
 
 def get_some_details():
+    mode = "r"
+    #with open(lazyduck.json, mode) as new_lz:
+
     """Parse some JSON.
 
     In lazyduck.json is a description of a person from https://randomuser.me/
@@ -29,21 +32,23 @@ def get_some_details():
     Return a new dictionary that just has the last name, password, and the
     number you get when you add the postcode to the id-value.
     TIP: Make sure that you add the numbers, not concatinate the strings.
-         E.g. 2000 + 3000 = 5000 not 20003000
+        E.g. 2000 + 3000 = 5000 not 20003000
     TIP: Keep a close eye on the format you get back. JSON is nested, so you
-         might need to go deep. E.g to get the name title you would need to:
-         data["results"][0]["name"]["title"]
-         Look out for the type of brackets. [] means list and {} means
-         dictionary, you'll need integer indeces for lists, and named keys for
-         dictionaries.
+        might need to go deep. E.g to get the name title you would need to:
+        data["results"][0]["name"]["title"]
+        Look out for the type of brackets. [] means list and {} means
+        dictionary, you'll need integer indeces for lists, and named keys for
+        dictionaries.
     """
     json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+    return {"lastName": data["results"][0]["name"]["last"], "password": ["results"][0]["login"][], "postcodePlusID": None}
 
 
 def wordy_pyramid():
+    words = open(LOCAL + "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength=20".read)
+    new_data = requests.loads(words)
     """Make a pyramid out of real words.
 
     There is a random word generator here:
@@ -78,6 +83,20 @@ def wordy_pyramid():
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
     pyramid = []
+
+    for i in range(3,30, 2):
+        url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={i}"
+        response = requests.get(url)
+        if r.status_code == 200:
+            word = response.text
+            pyramid.append(word)
+
+    for i in range(11,4, -2):
+        url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={i}"
+        response = requests.get(url)
+        if r.status_code == 200:
+            word = response.text
+            pyramid.append(word)
 
     return pyramid
 
