@@ -1,22 +1,19 @@
 """Set 3, Exercise 3.
 
-Steps on the way to making your own guessing game.
+Steps on the way to making your own guessing game.#
 """
 
 import random
 
 
 def advancedGuessingGame():
-    print("You are going to guess a number berween from_")
+    print("You are going to guess a number between from_")
     lower_bound = input()
-    while lower_bound != int:
-        print("Is it what's on your mind? Ok, but we are trying to play a game now, so please give me a number.")
-        lower_bound = input()
-    print("Awesome! Then, what will be the higher bound?")
-    higher_bound = input()
-    while higher_bound != int:
-        print("Is it what's on your mind? Ok, but we are trying to play a game now, so please give me a number.")
-        higher_bound = input()
+    lower_bound = int(lower_bound)
+    print(f"A number between {lower_bound} and _ ?")
+    higher_bound = input("Enter an upper bound: ")
+    print(f"OK then, a number between 0 and {higher_bound} ?")
+    higher_bound = int(higher_bound)
     int(lower_bound)
     int(higher_bound)
     actualNumber = random.randint(lower_bound, higher_bound)
@@ -26,12 +23,15 @@ def advancedGuessingGame():
         print(f'Ok, so far you think it was {users_guess}')
         if users_guess == actualNumber:
             print("Why are you so lucky?")
+            guessed = True
         elif users_guess < actualNumber:
             print("Well, it's a bit bigger.")
             users_guess = int(input("Now, your new guess: "))
         elif users_guess > actualNumber:
             print("Well, it's smaller. Try again.")
-            
+        elif guessed not in range(lower_bound, higher_bound):
+            print("Have you already forgotten what we are playing here?..")
+    return "You got it!"
 
 
 
@@ -45,7 +45,7 @@ def advancedGuessingGame():
     #ask for another value.
     #chastise them if they pick a number outside the bounds.
     #see if you can find the other failure modes.
-      #There are three that I can think of. (They are tested for.)
+    #There are three that I can think of. (They are tested for.)
 
     #NOTE: whilst you CAN write this from scratch, and it'd be good for you to
     #be able to eventually, it'd be better to take the code from exercise 2 and
@@ -56,7 +56,7 @@ def advancedGuessingGame():
     #Remember to think modular. Try to keep your functions small and single
     #purpose if you can!
     
-  return "You got it!"
+    return "You got it!"
     # the tests are looking for the exact string "You got it!". Don't modify that!
 
 
