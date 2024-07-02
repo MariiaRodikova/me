@@ -9,9 +9,26 @@ import random
 def advancedGuessingGame():
     print("You are going to guess a number between from_")
     lower_bound = input()
-    lower_bound = int(lower_bound)
+    # check whether lb is an integer or not with while loop?
+    #if lower_bound.isdigit():
+    #    print("OK it's settled")
+    #else:
+    #    print("Number, sir/madam!")
+    #    lower_bound = input()
+    try:
+        lower_bound = int(lower_bound)
+        print("OK it's settled")
+    except ValueError:
+        print("Number, sir/madam!")
+        lower_bound = input()
     print(f"A number between {lower_bound} and _ ?")
     higher_bound = input("Enter an upper bound: ")
+    try:
+        higher_bound = int(higher_bound)
+        print("OK it's settled")
+    except ValueError:
+        print("Number, sir/madam!")
+        higher_bound = input()
     print(f"OK then, a number between 0 and {higher_bound} ?")
     higher_bound = int(higher_bound)
     int(lower_bound)
@@ -30,6 +47,7 @@ def advancedGuessingGame():
         elif users_guess > actualNumber:
             print("Well, it's smaller. Try again.")
         elif guessed not in range(lower_bound, higher_bound):
+        # elif guessed < lower_bound or guessed > higher_bound:
             print("Have you already forgotten what we are playing here?..")
     return "You got it!"
 
