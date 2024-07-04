@@ -25,7 +25,7 @@ def binary_search(low, high, actual_number):
     tries = 0
     guess = 0
 
-    print("Guessing numbers (still)")
+    print("numbers (again)")
     low = input()
     low = int(low)
     print(f"A number between {low} and _ ?")
@@ -56,7 +56,8 @@ def binary_search(low, high, actual_number):
     
     binary_search(low, high, actual_number)
 
-
+#QUESTIONs:
+#1) why it goes back when runs after the high input
 
 
     return {"guess": guess, "tries": tries}
