@@ -2,16 +2,17 @@
 """Set 3, Exercise 4."""
 
 import math
+import random
 
 
 def binary_search(low, high, actual_number):
     """Do a binary search.
 
     This is going to be your first 'algorithm' in the usual sense of the word!
-    you'll give it a range to guess inside, and then use binary search to home
+    you'll 1) give it a range to guess inside, and then 2) use binary search to home
     in on the actual_number.
 
-    Each guess, print what the guess is. Then when you find the number return
+    Each guess, 1) print what the guess is. Then when you find the number return
     the number of guesses it took to get there and the actual number
     as a dictionary. make sure that it has exactly these keys:
     {"guess": guess, "tries": tries}
@@ -24,7 +25,39 @@ def binary_search(low, high, actual_number):
     tries = 0
     guess = 0
 
-    # Write your code in here
+    print("Guessing numbers (still)")
+    low = input()
+    low = int(low)
+    print(f"A number between {low} and _ ?")
+    high = input("Enter an upper bound: ")
+    high = int(high)
+    print(f"OK then, a number between 0 and {high} ?")
+    for j in range(low, high):
+    # arr = [ 10, 20, 30 ]
+    #        ^lo=0     ^ hi=2 (arrs are zero indexed)
+    #              ^ middle=1
+                # so,  mid = (hi-lo)/2 + 1
+        l = []
+        l.append(j)
+    actual_number = random.randint(low, high)
+    two = 2
+    middle = len(l)/two
+    if actual_number == middle:
+        print("!")
+    elif actual_number > middle:
+        low = middle
+        middle = (high - low)/2 
+        tries = tries + 1
+        # while 
+    elif actual_number < middle:
+        high = middle
+        middle = (high - low)/2
+        tries = tries + 1
+    
+    binary_search(low, high, actual_number)
+
+
+
 
     return {"guess": guess, "tries": tries}
 
