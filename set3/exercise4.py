@@ -2,7 +2,7 @@
 """Set 3, Exercise 4."""
 
 import math
-import random
+
 
 
 def binary_search(low, high, actual_number):
@@ -25,37 +25,32 @@ def binary_search(low, high, actual_number):
     tries = 0
     guess = 0
 
-    print("numbers (again)")
-    low = input("Lower bound: ")
-    low = int(low)
-    print(f"A number between {low} and _ ?")
-    high = input("Enter an upper bound: ")
-    high = int(high)
-    print(f"OK then, a number between 0 and {high} ?")
-    for j in range(low, high):
-        l = []
-        l.append(j)
-    
+    #print("numbers (again)")
+    #low = input("Lower bound: ")
+    #low = int(low)
+    #print(f"A number between {low} and _ ?")
+    #high = input("Enter an upper bound: ")
+    #high = int(high)
+    #print(f"OK then, a number between 0 and {high} ?")
+    #for j in range(low, high):
+    #    l = []
+    #   l.append(j)
     #actual_number = l.randint(low, high)
-    actual_number = input("Searching for ")
-    actual_number = int(actual_number)
-    while actual_number > low and actual_number < high:
+    #actual_number = input("Searching for ")
+    #actual_number = int(actual_number)
+    while actual_number >= low and actual_number <= high:
         two = 2
-        middle = len(l)//two
-        print(f"low:{low}, mid:{middle}, high:{high}")
-        if actual_number == middle:
-            return tries
-        elif actual_number > middle:
-            low = middle + 1
-            middle = (high - low)/2 
+        #middle = len(l)//two
+        guess = math.floor((low + high)/2)
+        if guess == actual_number:
+            return  {"guess": guess, "tries": tries}
+        elif guess < actual_number:
+            low = guess + 1
             tries = tries + 1
-            return binary_search(low, high, actual_number)
-        elif actual_number < middle:
-            high = middle - 1
-            middle = (high - low)/2
+        elif guess > actual_number:
+            high = guess - 1
             tries = tries + 1
-            return binary_search(low, high, actual_number)
-    binary_search(low, high, actual_number)
+            
 
 #QUESTIONs:
 #1) why it goes back when runs after the high input
