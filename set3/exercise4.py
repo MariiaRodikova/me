@@ -33,6 +33,7 @@ def binary_search(low, high, actual_number):
     #high = int(high)
     #print(f"OK then, a number between 0 and {high} ?")
     #for j in range(low, high):
+    #for i in range(random.randrange(low, high)):
     #    l = []
     #   l.append(j)
     #actual_number = l.randint(low, high)
@@ -51,11 +52,6 @@ def binary_search(low, high, actual_number):
             high = guess - 1
             tries = tries + 1
             
-
-#QUESTIONs:
-#1) why it goes back when runs after the high input
-
-
     return {"guess": guess, "tries": tries}
 
 
