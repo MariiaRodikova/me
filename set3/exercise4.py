@@ -26,34 +26,35 @@ def binary_search(low, high, actual_number):
     guess = 0
 
     print("numbers (again)")
-    low = input()
+    low = input("Lower bound: ")
     low = int(low)
     print(f"A number between {low} and _ ?")
     high = input("Enter an upper bound: ")
     high = int(high)
     print(f"OK then, a number between 0 and {high} ?")
     for j in range(low, high):
-    # arr = [ 10, 20, 30 ]
-    #        ^lo=0     ^ hi=2 (arrs are zero indexed)
-    #              ^ middle=1
-                # so,  mid = (hi-lo)/2 + 1
         l = []
         l.append(j)
-    actual_number = random.randint(low, high)
-    two = 2
-    middle = len(l)/two
-    if actual_number == middle:
-        print("!")
-    elif actual_number > middle:
-        low = middle
-        middle = (high - low)/2 
-        tries = tries + 1
-        # while 
-    elif actual_number < middle:
-        high = middle
-        middle = (high - low)/2
-        tries = tries + 1
     
+    #actual_number = l.randint(low, high)
+    actual_number = input("Searching for ")
+    actual_number = int(actual_number)
+    while actual_number > low and actual_number < high:
+        two = 2
+        middle = len(l)//two
+        print(f"low:{low}, mid:{middle}, high:{high}")
+        if actual_number == middle:
+            return tries
+        elif actual_number > middle:
+            low = middle
+            middle = (high - low)/2 
+            tries = tries + 1
+            return binary_search(low, high, actual_number)
+        elif actual_number < middle:
+            high = middle
+            middle = (high - low)/2
+            tries = tries + 1
+            return binary_search(low, high, actual_number)
     binary_search(low, high, actual_number)
 
 #QUESTIONs:
