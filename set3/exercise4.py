@@ -46,12 +46,12 @@ def binary_search(low, high, actual_number):
         if actual_number == middle:
             return tries
         elif actual_number > middle:
-            low = middle
+            low = middle + 1
             middle = (high - low)/2 
             tries = tries + 1
             return binary_search(low, high, actual_number)
         elif actual_number < middle:
-            high = middle
+            high = middle - 1
             middle = (high - low)/2
             tries = tries + 1
             return binary_search(low, high, actual_number)
