@@ -121,7 +121,7 @@ def pokedex(low=1, high=5):
     if r.status_code is 200:
         the_json = json.loads(r.text)
 
-    return {"name": [id]["name"], "weight": [id]["weight"], "height": [id]["height"]}
+    return {"name": ["abilities"][id]["ability"]["name"], "weight": ["abilities"][id]["weight"], "height": ["abilities"][id]["height"]}
 
 
 def diarist():
@@ -142,6 +142,7 @@ def diarist():
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
+
     pass
 
 
