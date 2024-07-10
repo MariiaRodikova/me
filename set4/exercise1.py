@@ -128,7 +128,7 @@ def pokedex(low=1, high=5):
     while low < high:
         if height > tallest:
             tallest = height
-            pokemon_go.update({"name": "name", "weight": "weight", "height": "height"})
+            pokemon_go.update({"name": name, "weight": weight, "height": height})
         low += 1
 
     return pokemon_go
