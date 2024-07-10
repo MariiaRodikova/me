@@ -43,11 +43,11 @@ def get_some_details():
     json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    return {"lastName": data["results"][0]["name"]["last"], "password": ["results"][0]["login"][], "postcodePlusID": None}
+    return {"lastName": data["results"][0]["name"]["last"], "password": data["results"][0]["login"]["password"], "postcodePlusID": int(data["results"][0]["location"]["postcode"]) + int(data["results"][0]["id"]["value"])}
 
 
 def wordy_pyramid():
-    words = open(LOCAL + "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength=20".read)
+    words = open(LOCAL + "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength=20").read()
     new_data = requests.loads(words)
     """Make a pyramid out of real words.
 
@@ -110,10 +110,10 @@ def pokedex(low=1, high=5):
     Parse the json and extract the values needed.
 
     TIP: reading json can someimes be a bit confusing. Use a tool like
-         http://www.jsoneditoronline.org/ to help you see what's going on.
+        http://www.jsoneditoronline.org/ to help you see what's going on.
     TIP: these long json accessors base["thing"]["otherThing"] and so on, can
-         get very long. If you are accessing a thing often, assign it to a
-         variable and then future access will be easier.
+        get very long. If you are accessing a thing often, assign it to a
+        variable and then future access will be easier.
     """
     id = 5
     url = f"https://pokeapi.co/api/v2/pokemon/{id}"
@@ -121,7 +121,7 @@ def pokedex(low=1, high=5):
     if r.status_code is 200:
         the_json = json.loads(r.text)
 
-    return {"name": None, "weight": None, "height": None}
+    return {"name": [id]["name"], "weight": [id]["weight"], "height": [id]["height"]}
 
 
 def diarist():
@@ -129,14 +129,15 @@ def diarist():
 
     Read in Trispokedovetiles(laser).gcode and count the number of times the
     laser is turned on and off. That's the command "M10 P1".
+    #It's 6.
     Write the answer (a number) to a file called 'lasers.pew' in the Set4 directory.
 
     TIP: you need to write a string, so you'll need to cast your number
     TIP: Trispokedovetiles(laser).gcode uses windows style line endings. CRLF
-         not just LF like unix does now. If your comparison is failing this
-         might be why. Try in rather than == and that might help.
+        not just LF like unix does now. If your comparison is failing this
+        might be why. Try in rather than == and that might help.
     TIP: remember to commit 'lasers.pew' and push it to your repo, otherwise
-         the test will have nothing to look at.
+        the test will have nothing to look at.
     TIP: this might come in handy if you need to hack a 3d print file in the future.
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
