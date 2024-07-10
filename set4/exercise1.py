@@ -47,8 +47,6 @@ def get_some_details():
 
 
 def wordy_pyramid():
-    words = open(LOCAL + "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength=20").read()
-    new_data = requests.loads(words)
     """Make a pyramid out of real words.
 
     There is a random word generator here:
@@ -82,20 +80,21 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
+
     pyramid = []
 
     for i in range(3,30, 2):
         url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={i}"
-        response = requests.get(url)
+        r = requests.get(url)
         if r.status_code == 200:
-            word = response.text
+            word = r.text
             pyramid.append(word)
 
     for i in range(11,4, -2):
         url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={i}"
-        response = requests.get(url)
+        r = requests.get(url)
         if r.status_code == 200:
-            word = response.text
+            word = r.text
             pyramid.append(word)
 
     return pyramid
@@ -115,13 +114,25 @@ def pokedex(low=1, high=5):
         get very long. If you are accessing a thing often, assign it to a
         variable and then future access will be easier.
     """
-    id = 5
+    pokemon_go = {"name": "name", "weight": "weight", "height": "height"}
+    id = low
     url = f"https://pokeapi.co/api/v2/pokemon/{id}"
     r = requests.get(url)
     if r.status_code is 200:
         the_json = json.loads(r.text)
 
-    return {"name": ["abilities"][id]["ability"]["name"], "weight": ["abilities"][id]["weight"], "height": ["abilities"][id]["height"]}
+    name = the_json.get("name")
+    weight = the_json.get("weight")
+    height = the_json.get("height")
+    tallest = 0
+    while low < high:
+        if height > tallest:
+            tallest = height
+            pokemon_go.update({"name": "name", "weight": "weight", "height": "height"})
+        low += 1
+
+    return pokemon_go
+    #{"name": ["abilities"][id]["ability"]["name"], "weight": ["abilities"][id]["weight"], "height": ["abilities"][id]["height"]}
 
 
 def diarist():
