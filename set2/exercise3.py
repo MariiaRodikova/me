@@ -41,14 +41,14 @@ def fix_it(moves, should_move):
     Most people write this function with 4 return statements.
     As an extra challenge, see if you can get that down to three. return None
     """
-    if moves==True:
-        if should_move==False:
-            return "Duct Tape"
+    if moves == True:
+        if should_move == False:
+            return "WD-40"
         else:
             return "No Problem"
-    elif moves==False:
+    elif moves == False:
         if should_move==True:
-            return "WD-40"
+            return "Duct Tape"
         else:
             return "No Problem"
 
@@ -87,10 +87,10 @@ def loops_1a():
 
 
 def loops_1c(number_of_items=5, symbol="#"):
-    loops_1c = []
-    for i in range(number_of_items):
-        loops_1c.append(symbol)
-    return loops_1c
+    loopc = []
+    for i in range(number_of_items + 1):
+        loopc.append('#')
+    return loopc
     """Respond to variables.
 
     Return a list of number_of_items items, each one a
@@ -102,10 +102,7 @@ def loops_1c(number_of_items=5, symbol="#"):
     """
     # number_of_items = []
     # int(number_of_items)
-    loops_1c = []
-    for i in range(number_of_items):
-        loops_1c.append(symbol)
-    return number_of_items
+    
 
 
 
