@@ -43,12 +43,12 @@ def fix_it(moves, should_move):
     """
     if moves == True:
         if should_move == False:
-            return "WD-40"
+            return "Duct Tape" 
         else:
             return "No Problem"
     elif moves == False:
         if should_move==True:
-            return "Duct Tape"
+            return "WD-40"
         else:
             return "No Problem"
 
@@ -88,8 +88,8 @@ def loops_1a():
 
 def loops_1c(number_of_items=5, symbol="#"):
     loopc = []
-    for i in range(number_of_items + 1):
-        loopc.append('#')
+    for i in range(number_of_items):
+        loopc.append(symbol)
     return loopc
     """Respond to variables.
 
