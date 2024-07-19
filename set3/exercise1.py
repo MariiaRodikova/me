@@ -6,11 +6,9 @@ Modify each function until the tests pass.
 
 
 def loop_ranger(start, stop, step=1):
-    for i in range(start, stop, step):
-        return loop_ranger
+    # code below
     """Return a list of numbers between start and stop in steps of step.
-    #for i in range(start, stop, 1):
-        return i
+    #.
 
     Using a while loop make a list of numbers that goes from the start number up
     to, but not including, the stop number, in increments of step. E.g.:
@@ -21,6 +19,12 @@ def loop_ranger(start, stop, step=1):
     Look up for how range() works in the python docs. You could  answer this
     with just the range function, but we'd like you to do it the long way.
     """
+    while start < stop:
+        list_for_what = []
+        for i in range(start, stop, step):
+            list_for_what.append(i)
+    return list_for_what
+
     #while start<stop:
     #    while  start % 2 != 0:
     #        return start + 2
