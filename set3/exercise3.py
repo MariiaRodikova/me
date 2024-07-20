@@ -15,24 +15,25 @@ def advancedGuessingGame():
     #else:
     #    print("Number, sir/madam!")
     #    lower_bound = input()
-    try:
-        lower_bound = int(lower_bound)
-        print("OK it's settled")
-    except ValueError:
-        print("Number, sir/madam!")
-        lower_bound = input()
+    while type(lower_bound) != int:
+        try:
+            lower_bound = int(lower_bound)
+            print("OK it's settled")
+        except ValueError:
+            print("Number, sir/madam!")
+            lower_bound = input()
     print(f"A number between {lower_bound} and _ ?")
     higher_bound = input("Enter an upper bound: ")
-    try:
-        higher_bound = int(higher_bound)
-        print("OK it's settled")
-    except ValueError:
-        print("Number, sir/madam!")
-        higher_bound = input()
+    while type(higher_bound) != int:
+        try:
+            higher_bound = int(higher_bound)
+            print("OK it's settled")
+        except ValueError:
+            print("Number, sir/madam!")
+            higher_bound = input()
     print(f"OK then, a number between 0 and {higher_bound} ?")
-    higher_bound = int(higher_bound)
-    int(lower_bound)
-    int(higher_bound)
+    #higher_bound = int(higher_bound)
+    #int(lower_bound)
     actualNumber = random.randint(lower_bound, higher_bound)
     guessed = False
     while not guessed:
@@ -47,7 +48,7 @@ def advancedGuessingGame():
         elif users_guess > actualNumber:
             print("Well, it's smaller. Try again.")
         elif guessed not in range(lower_bound, higher_bound):
-        # elif guessed < lower_bound or guessed > higher_bound:
+        # elif (guessed < lower_bound) | (guessed > higher_bound):
             print("Have you already forgotten what we are playing here?..")
     return "You got it!"
 
