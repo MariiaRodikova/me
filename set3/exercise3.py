@@ -48,7 +48,7 @@ def advancedGuessingGame():
         elif users_guess > actualNumber:
             print("Well, it's smaller. Try again.")
         elif guessed not in range(lower_bound, higher_bound):
-        # elif (guessed < lower_bound) | (guessed > higher_bound):
+        #  elif (guessed < lower_bound) | (guessed > higher_bound):
             print("Have you already forgotten what we are playing here?..")
     return "You got it!"
 
