@@ -7,53 +7,6 @@ import random
 
 
 def advancedGuessingGame():
-    print("You are going to guess a number between from_")
-    lower_bound = input()
-    # check whether lb is an integer or not with while loop?
-    #if lower_bound.isdigit():
-    #    print("OK it's settled")
-    #else:
-    #    print("Number, sir/madam!")
-    #    lower_bound = input()
-    while type(lower_bound) != int:
-        try:
-            lower_bound = int(lower_bound)
-            print("OK it's settled")
-        except ValueError:
-            print("Number, sir/madam!")
-            lower_bound = input()
-    print(f"A number between {lower_bound} and _ ?")
-    higher_bound = input("Enter an upper bound: ")
-    while type(higher_bound) != int:
-        try:
-            higher_bound = int(higher_bound)
-            print("OK it's settled")
-        except ValueError:
-            print("Number, sir/madam!")
-            higher_bound = input()
-    print(f"OK then, a number between 0 and {higher_bound} ?")
-    #higher_bound = int(higher_bound)
-    #int(lower_bound)
-    actualNumber = random.randint(lower_bound, higher_bound)
-    guessed = False
-    while not guessed:
-        users_guess = int(input("Now, your guess: "))
-        print(f'Ok, so far you think it was {users_guess}')
-        if users_guess == actualNumber:
-            print("Why are you so lucky?")
-            guessed = True
-        elif users_guess < actualNumber:
-            print("Well, it's a bit bigger.")
-            users_guess = int(input("Now, your new guess: "))
-        elif users_guess > actualNumber:
-            print("Well, it's smaller. Try again.")
-        elif guessed not in range(lower_bound, higher_bound):
-        #  elif (guessed < lower_bound) | (guessed > higher_bound):
-            print("Have you already forgotten what we are playing here?..")
-    return "You got it!"
-
-
-
     #"Play a guessing game with a user.
 
     #The exercise here is to rewrite the exampleGuessingGame() function
@@ -74,9 +27,49 @@ def advancedGuessingGame():
     #in several places.
     #Remember to think modular. Try to keep your functions small and single
     #purpose if you can!
-    
-    return "You got it!"
     # the tests are looking for the exact string "You got it!". Don't modify that!
+    print("You are going to guess a number between from_")
+    lower_bound = input()
+    while type(lower_bound) != int:
+        try:
+            lower_bound = int(lower_bound)
+            print("OK it's settled")
+        except ValueError:
+            print("Number, sir/madam!")
+            lower_bound = input()
+    print(f"A number between {lower_bound} and _ ?")
+    higher_bound = input("Enter an upper bound: ")
+    while type(higher_bound) != int:
+        try:
+            higher_bound = int(higher_bound)
+            print("OK it's settled")
+        except ValueError:
+            print("Number, sir/madam!")
+            higher_bound = input()
+    while lower_bound > higher_bound:
+        print("Now upper bound is smaller than the lower bound, try again ")
+        higher_bound = input("Enter an upper bound: ")
+    print(f"OK then, a number between 0 and {higher_bound} ?")
+    actualNumber = random.randint(lower_bound, higher_bound)
+    guessed = False
+    while not guessed:
+        users_guess = int(input("Now, your guess: "))
+        print(f'Ok, so far you think it was {users_guess}')
+        if users_guess == actualNumber:
+            print("Why are you so lucky?")
+            guessed = True
+        elif users_guess < actualNumber:
+            print("Well, it's a bit bigger.")
+            users_guess = int(input("Now, your new guess: "))
+        elif users_guess > actualNumber:
+            print("Well, it's smaller. Try again.")
+        elif guessed not in range(lower_bound, higher_bound):
+        #  elif (guessed < lower_bound) | (guessed > higher_bound):
+            print("Have you already forgotten what we are playing here?..")
+    return "You got it!"
+
+
+
 
 
 if __name__ == "__main__":
