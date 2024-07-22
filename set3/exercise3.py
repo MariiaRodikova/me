@@ -8,7 +8,6 @@ import random
 
 def advancedGuessingGame():
     #"Play a guessing game with a user.
-
     #The exercise here is to rewrite the exampleGuessingGame() function
     #from exercise 3, but to allow for:
     #* a lower bound to be entered, e.g. guess numbers between 10 and 20
@@ -18,7 +17,6 @@ def advancedGuessingGame():
     #chastise them if they pick a number outside the bounds.
     #see if you can find the other failure modes.
     #There are three that I can think of. (They are tested for.)
-
     #NOTE: whilst you CAN write this from scratch, and it'd be good for you to
     #be able to eventually, it'd be better to take the code from exercise 2 and
     #merge it with code from excercise 1.
@@ -28,7 +26,7 @@ def advancedGuessingGame():
     #Remember to think modular. Try to keep your functions small and single
     #purpose if you can!
     # the tests are looking for the exact string "You got it!". Don't modify that!
-    print("You are going to guess a number between from_")
+    print("You are going to guess a number from_")
     lower_bound = input()
     while type(lower_bound) != int:
         try:
@@ -46,23 +44,28 @@ def advancedGuessingGame():
         except ValueError:
             print("Number, sir/madam!")
             higher_bound = input()
-    while lower_bound > higher_bound:
+    if lower_bound > higher_bound:
         print("Now upper bound is smaller than the lower bound, try again ")
         higher_bound = input("Enter an upper bound: ")
-    print(f"OK then, a number between 0 and {higher_bound} ?")
+    if higher_bound == lower_bound:
+        print ("They are equal. Try again ")
+        higher_bound = input("Enter an upper bound: ")
+    if higher_bound - lower_bound == 1:
+        print ("And what we are going to guess? Try again ")
+        higher_bound = input("Enter an upper bound: ")
+    print(f"OK then, a number between {lower_bound} and {higher_bound} ?")
     actualNumber = random.randint(lower_bound, higher_bound)
     guessed = False
     while not guessed:
         users_guess = int(input("Now, your guess: "))
-        print(f'Ok, so far you think it was {users_guess}')
         if users_guess == actualNumber:
             print("Why are you so lucky?")
             guessed = True
         elif users_guess < actualNumber:
-            print("Well, it's a bit bigger.")
+            print(f"Well, it's a bit bigger than {users_guess}. Try again ")
             users_guess = int(input("Now, your new guess: "))
         elif users_guess > actualNumber:
-            print("Well, it's smaller. Try again.")
+            print(f"Too small, {users_guess} is smaller than the actual number. try again :'( ")
         elif guessed not in range(lower_bound, higher_bound):
         #  elif (guessed < lower_bound) | (guessed > higher_bound):
             print("Have you already forgotten what we are playing here?..")
