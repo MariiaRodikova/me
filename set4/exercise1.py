@@ -8,9 +8,9 @@ import requests
 import inspect
 import sys
 
-# Handy constants
-LOCAL = os.path.dirname(os.path.realpath(__file__))  # the context of this file
-CWD = os.getcwd()  # The curent working directory
+ #Handy constants
+LOCAL = os.path.dirname(os.path.realpath(__file__))   #the context of this file
+CWD = os.getcwd()   #The curent working directory
 if LOCAL != CWD:
     print(
         f"""
@@ -23,25 +23,26 @@ if LOCAL != CWD:
 
 
 def get_some_details():
-    mode = "r"
-    #with open(lazyduck.json, mode) as new_lz:
+    
 
     """Parse some JSON.
 
-    In lazyduck.json is a description of a person from https://randomuser.me/
-    Read it in and use the json library to convert it to a dictionary.
-    Return a new dictionary that just has the last name, password, and the
-    number you get when you add the postcode to the id-value.
-    TIP: Make sure that you add the numbers, not concatinate the strings.
-        E.g. 2000 + 3000 = 5000 not 20003000
-    TIP: Keep a close eye on the format you get back. JSON is nested, so you
-        might need to go deep. E.g to get the name title you would need to:
-        the_json["results"][0]["name"]["title"]
-        Look out for the type of brackets. [] means list and {} means
-        dictionary, you'll need integer indeces for lists, and named keys for
-        dictionaries.
+        In lazyduck.json is a description of a person from https://randomuser.me/
+        Read it in and use the json library to convert it to a dictionary.
+        Return a new dictionary that just has the last name, password, and the
+        number you get when you add the postcode to the id-value.
+        TIP: Make sure that you add the numbers, not concatinate the strings.
+            E.g. 2000 + 3000 = 5000 not 20003000
+        TIP: Keep a close eye on the format you get back. JSON is nested, so you
+            might need to go deep. E.g to get the name title you would need to:
+            the_json["results"][0]["name"]["title"]
+            Look out for the type of brackets. [] means list and {} means
+            dictionary, you'll need integer indeces for lists, and named keys for
+            dictionaries.
     """
-    json_data = open(LOCAL + "/lazyduck.json").read()
+    mode = "r"
+    with open("set4/lazyduck.json", mode) as new_lz:
+        json_data = open(LOCAL + "/lazyduck.json").read()
 
     the_json = json.loads(json_data)
     return {"lastName": the_json["results"][0]["name"]["last"], "password": the_json["results"][0]["login"]["password"], "postcodePlusID": int(the_json["results"][0]["location"]["postcode"]) + int(the_json["results"][0]["id"]["value"])}
@@ -92,7 +93,7 @@ def wordy_pyramid():
             word = r.text
             pyramid.append(word)
 
-    for i in range(20,4, -2):
+    for i in range(20,3, -2):
         url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={i}"
         r = requests.get(url)
         if r.status_code == 200:
@@ -103,7 +104,7 @@ def wordy_pyramid():
 
 
 def pokedex(low=1, high=5):
-    """Return the name, height and weight of the tallest pokemon in the range low to high.
+    """Return the name, height and weight of the pokemon_go[height] pokemon in the range low to high.
 
     Low and high are the range of pokemon ids to search between.
     Using the Pokemon API: https://pokeapi.co get some JSON using the request library
@@ -116,34 +117,24 @@ def pokedex(low=1, high=5):
         get very long. If you are accessing a thing often, assign it to a
         variable and then future access will be easier.
     """
-    id = low
-    tallest = 0
-    pokemon_go = {"name": "name", "weight": "weight", "height": "height"}
+    pokemon_go = {"name": "name", "weight": -1 , "height": -1}
 
     while low < high:
-    #id = range(low, high)
-    #id = low 
-    #test fails because id is only low = 1 but it should be range from low to high
-        url = f"https://pokeapi.co/api/v2/pokemon/{id}"
+        url = f"https://pokeapi.co/api/v2/pokemon/{low}"
         r = requests.get(url)
         if r.status_code is 200:
             the_json = json.loads(r.text)
-            #the_json = response.json()
         name = the_json.get("name")
         weight = the_json.get("weight")
         height = the_json.get("height")
         
-        if height > tallest:
-            tallest = height
+        if height > pokemon_go["height"]:
             pokemon_go.update({"name": name, "weight": weight, "height": height})
-            print (pokemon_go)
+            #print (pokemon_go)
         low += 1
-    #pokemon_go = {"name": [name], "weight": [weight], "height": [height]}
+    
     return pokemon_go
-    #{"name": pokemon_go.get(name), 
-            #"weight": pokemon_go.get(weight),
-            #"height": pokemon_go.get(height)}
-    #{"name": ["abilities"][id]["ability"]["name"], "weight": ["abilities"][id]["weight"], "height": ["abilities"][id]["height"]}
+    
 
 
 def diarist():
@@ -151,7 +142,7 @@ def diarist():
 
     Read in Trispokedovetiles(laser).gcode and count the number of times the
     laser is turned on and off. That's the command "M10 P1".
-    #It's 6.
+    It's 6.
     Write the answer (a number) to a file called 'lasers.pew' in the Set4 directory.
 
     TIP: you need to write a string, so you'll need to cast your number
@@ -164,17 +155,26 @@ def diarist():
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
-    answer = open(LOCAL + '/laser.pew').read()
+    running_titles = 0
+    with open(LOCAL + '/Trispokedovetiles(laser).gcode', "r") as gcode:
+        for line in gcode.readlines():
+            if "M10 P1" in line:
+                running_titles += 1
+    with open(LOCAL + "/lasers.pew", "w") as f:
+        f.write(str(running_titles))
+
+    #write
     #pass
 
 
 if __name__ == "__main__":
     print(get_some_details())
 
-    wp = wordy_pyramid()
-    [print(f"{word} {len(word)}") for word in wp]
+    #wp = wordy_pyramid()
+    #[print(f"{word} {len(word)}") for word in wp]
 
-    print(pokedex(low=3, high=7))
+    #print(pokedex(low=3, high=7))
+    #print(pokedex(low=13, high=17))
 
     diarist()
 
