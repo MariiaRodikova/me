@@ -31,6 +31,7 @@ def be_cool_for_ever(name, file_path):
     history_book = open(file_path, mode)
     history_book.write(f"{name} is cool")
     history_book.close()
+    #ok but not really useful way (append VS write, which delete previous info)
 
 
 # look up what '..' means
