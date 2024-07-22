@@ -3,6 +3,7 @@
 
 import json
 import os
+from urllib import response
 import requests
 import inspect
 import sys
@@ -35,15 +36,15 @@ def get_some_details():
         E.g. 2000 + 3000 = 5000 not 20003000
     TIP: Keep a close eye on the format you get back. JSON is nested, so you
         might need to go deep. E.g to get the name title you would need to:
-        data["results"][0]["name"]["title"]
+        the_json["results"][0]["name"]["title"]
         Look out for the type of brackets. [] means list and {} means
         dictionary, you'll need integer indeces for lists, and named keys for
         dictionaries.
     """
     json_data = open(LOCAL + "/lazyduck.json").read()
 
-    data = json.loads(json_data)
-    return {"lastName": data["results"][0]["name"]["last"], "password": data["results"][0]["login"]["password"], "postcodePlusID": int(data["results"][0]["location"]["postcode"]) + int(data["results"][0]["id"]["value"])}
+    the_json = json.loads(json_data)
+    return {"lastName": the_json["results"][0]["name"]["last"], "password": the_json["results"][0]["login"]["password"], "postcodePlusID": int(the_json["results"][0]["location"]["postcode"]) + int(the_json["results"][0]["id"]["value"])}
 
 
 def wordy_pyramid():
@@ -83,14 +84,15 @@ def wordy_pyramid():
 
     pyramid = []
 
-    for i in range(3,30, 2):
+    for i in range(3,21, 2):
         url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={i}"
+        word_length = i
         r = requests.get(url)
         if r.status_code == 200:
             word = r.text
             pyramid.append(word)
 
-    for i in range(11,4, -2):
+    for i in range(20,4, -2):
         url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={i}"
         r = requests.get(url)
         if r.status_code == 200:
@@ -114,24 +116,33 @@ def pokedex(low=1, high=5):
         get very long. If you are accessing a thing often, assign it to a
         variable and then future access will be easier.
     """
-    pokemon_go = {"name": "name", "weight": "weight", "height": "height"}
     id = low
-    url = f"https://pokeapi.co/api/v2/pokemon/{id}"
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
-
-    name = the_json.get("name")
-    weight = the_json.get("weight")
-    height = the_json.get("height")
     tallest = 0
+    pokemon_go = {"name": "name", "weight": "weight", "height": "height"}
+
     while low < high:
+    #id = range(low, high)
+    #id = low 
+    #test fails because id is only low = 1 but it should be range from low to high
+        url = f"https://pokeapi.co/api/v2/pokemon/{id}"
+        r = requests.get(url)
+        if r.status_code is 200:
+            the_json = json.loads(r.text)
+            #the_json = response.json()
+        name = the_json.get("name")
+        weight = the_json.get("weight")
+        height = the_json.get("height")
+        
         if height > tallest:
             tallest = height
             pokemon_go.update({"name": name, "weight": weight, "height": height})
+            print (pokemon_go)
         low += 1
-
+    #pokemon_go = {"name": [name], "weight": [weight], "height": [height]}
     return pokemon_go
+    #{"name": pokemon_go.get(name), 
+            #"weight": pokemon_go.get(weight),
+            #"height": pokemon_go.get(height)}
     #{"name": ["abilities"][id]["ability"]["name"], "weight": ["abilities"][id]["weight"], "height": ["abilities"][id]["height"]}
 
 
@@ -153,8 +164,8 @@ def diarist():
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
-
-    pass
+    answer = open(LOCAL + '/laser.pew').read()
+    #pass
 
 
 if __name__ == "__main__":
