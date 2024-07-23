@@ -24,25 +24,35 @@ Modify this function, don't write a whole new one.
 """
 
 
-def wordy_pyramid():
+def get_a_word_of_length_n(length):
     baseURL = (
-        "https://us-central1-waldenpondpress.cloudfunctions.net/"
-        "give_me_a_word?wordlength={length}"
+    "https://us-central1-waldenpondpress.cloudfunctions.net/"
+    "give_me_a_word?wordlength={length}"
     )
-    pyramid_list = []
-    def get_a_word_of_length_n(length):
-        url = baseURL.format(length=length)
-        r = requests.get(url)
-        if r.status_code == 200:
-            message = r.text
-            pyramid_list.append(message)
-        else:
-            print("failed a request", r.status_code, length)
+    url = baseURL.format(length=length)
+    r = requests.get(url)
+    if r.status_code == 200:
+        message = r.text
+        return message
+    else:
+        print("failed a request", r.status_code, length)
 
-    def list_of_words_with_lengths(length,list_of_lengths):
-        for length in range(list_of_lengths):
-            get_a_word_of_length_n(length)
+def list_of_words_with_lengths(list_of_lengths):
+    almost_pyramid_list = []
+    for length in list_of_lengths:
+            word = get_a_word_of_length_n(length)
+            almost_pyramid_list.append(word)
+    return almost_pyramid_list
     
+def wordy_pyramid():
+    pyramid_list = []
+    for i in range(3, 20, 2):
+        word = get_a_word_of_length_n(i)
+        pyramid_list.append(word)
+    for i in range(20, 3, -2):
+        word = get_a_word_of_length_n(i)
+        pyramid_list.append(word)
+        
     return pyramid_list
 
 
