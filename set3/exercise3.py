@@ -57,7 +57,14 @@ def advancedGuessingGame():
     actualNumber = random.randint(lower_bound, higher_bound)
     guessed = False
     while not guessed:
-        users_guess = int(input("Now, your guess: "))
+        users_guess = input("Now, your guess: ")
+        while type(users_guess) != int:
+            try:
+                users_guess = int(users_guess)
+                print("OK it's settled")
+            except ValueError:
+                print(f"Number, sir/madam,not {users_guess}!")
+                users_guess = input()
         if users_guess == actualNumber:
             print("Why are you so lucky?")
             guessed = True
