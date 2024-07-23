@@ -66,7 +66,6 @@ def advancedGuessingGame():
             print("Have you already forgotten what we are playing here?..")
         elif users_guess < actualNumber:
             print(f"Well, it's a bit bigger than {users_guess}. Try again ")
-            #users_guess = int(input("Now, your new guess: "))
         elif users_guess > actualNumber:
             print(f"Too small, {users_guess} is smaller than the actual number. try again :'( ")
     return "You got it!"
