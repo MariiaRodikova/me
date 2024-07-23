@@ -32,11 +32,10 @@ def get_a_word_of_length_n(length):
     url = baseURL.format(length=length)
     r = requests.get(url)
     if r.status_code == 200:
-        message = r.text
-        return message
+        return r.text
     else:
-        print("failed a request", r.status_code, length)
-
+        print("failed a request", r.status_code)
+        
 def list_of_words_with_lengths(list_of_lengths):
     almost_pyramid_list = []
     for length in list_of_lengths:
@@ -52,7 +51,6 @@ def wordy_pyramid():
     for i in range(20, 3, -2):
         word = get_a_word_of_length_n(i)
         pyramid_list.append(word)
-        
     return pyramid_list
 
 
