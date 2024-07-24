@@ -81,8 +81,7 @@ def one_counter(input_list=[1, 4, 1, 5, 1, 1]) -> int:
     Return an integer.
     TIP: the test will use a different input_list, so don't just return 2
     """
-    count = None
-
+    count = input_list.count(1)
     return count
 
 
@@ -90,8 +89,7 @@ def n_counter(search_for_this, input_list=[1, 4, 1, 5, 1, 1]) -> int:
     """Count the number of times search_for_this shows up in the input_list.
     Return an integer.
     """
-    count = None
-
+    count = input_list.count(search_for_this)
     return count
 
 
@@ -110,11 +108,22 @@ def fizz_buzz() -> list:
     Return a list that has an integer if the number isn't special,
     and a string if it is. E.g.
         [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8,
-         'Fizz', 'Buzz',  11, 'Fizz', 13, 14,
-         'FizzBuzz', 16, 17, ...]
+        'Fizz', 'Buzz',  11, 'Fizz', 13, 14,
+        'FizzBuzz', 16, 17, ...]
     """
     fizz_buzz_list = []
-    # your code here
+    for i in range(1, 101):
+        if i % 3 == 0 and i % 5 == 0:
+            fb = "FizzBuzz"
+            fizz_buzz_list.append(fb)
+        elif i % 3 == 0:
+            f = ("Fizz")
+            fizz_buzz_list.append(f)
+        elif i % 5 == 0:
+            b ="Buzz"
+            fizz_buzz_list.append(b)
+        else:
+            fizz_buzz_list.append(i)
 
     return fizz_buzz_list
 
