@@ -176,9 +176,8 @@ def pet_filter(letter="a") -> list:
         "fancy rat and lab rat", "mink", "red fox", "hedgehog", "guppy"
     ]
     # fmt: on
-    filtered = []
-
-    return filtered
+    filtered = [pet for pet in pets if letter in pets]
+    return pets[filtered]
 
 
 def best_letter_for_pets() -> str:
@@ -190,9 +189,23 @@ def best_letter_for_pets() -> str:
     TIP: you've seen this before in the pokedex.
     """
     import string
-
+    pets = [
+        "dog", "goat", "pig", "sheep", "cattle", "zebu", "cat", "chicken", 
+        "guinea pig", "donkey", "duck", "water buffalo", "python", "scorpion",
+        "western honey bee", "dromedary camel", "horse", "silkmoth", 
+        "pigeon", "goose", "yak", "bactrian camel", "llama", "alpaca", 
+        "guineafowl", "ferret", "muscovy duck", "barbary dove", "cichlid",
+        "bali cattle", "gayal", "turkey", "goldfish", "rabbit", "koi", 
+        "canary", "society finch", "fancy mouse", "siamese fighting fish", 
+        "fancy rat and lab rat", "mink", "red fox", "hedgehog", "guppy"
+    ]
     the_alphabet = string.ascii_lowercase
-    most_popular_letter = ""
+    letter_count = {letter: 0 for letter in string.ascii_lowercase}
+    for pet in pets:
+        for letter in string.ascii_lowercase:
+            if letter in pet:
+                letter_count[letter] += 1
+    most_popular_letter = max(letter_count, key=letter_count.get)
 
     return most_popular_letter
 
@@ -221,9 +234,18 @@ def make_filler_text_dictionary() -> dict:
     (i.e. 3, 4, 5, 6, 7 and 4 words for each)
     TIP: you'll need the requests library
     """
-
-    url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength="
-    wd = {}
+    for length in range(3, 8):
+        wd = {}
+        start_url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength="
+        url = f'{start_url}{length}'
+        words = []
+        for i in range(4):
+            r = requests.get(url)
+            if r.status_code == 200:
+                words.apped(r.text)
+            else:
+                print ("Error...")
+    wd[length] = words
 
     return wd
 
