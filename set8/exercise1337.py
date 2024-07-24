@@ -140,10 +140,11 @@ def set_it_on_fire(input_string="very naughty boy") -> str:
     TIP: make sure that you have a 🔥 on both ends of the string.
     """
     input_string = input_string.upper()
-    fire_list = ['🔥' + letter + '🔥' for letter in input_string]
-    this_answer = ''.join(fire_list)
+    separated_is = list(input_string) 
+    fire_list = ['🔥' + letter + '🔥' for letter in separated_is]
+    this_answer = '🔥'.join(separated_is)
 
-    return this_answer
+    return '🔥'+this_answer+'🔥'
 
 
 def the_chain_gang_5(the_value) -> bool:
@@ -287,10 +288,16 @@ def fast_filler(number_of_words=200) -> str:
     it'll convert integer keys to strings.
     If you get this one to work, you are a Very Good Programmer™!
     """
-
+    dict_we_need = make_filler_text_dictionary()
     fname = "dict_cache.json"
-
-    return None
+    if os.path.exists(fname):
+        with open(fname, 'r') as file:
+            we_need = json.load(dict_we_need)
+    else:
+        with open(fname, 'w') as file:
+            we_need = json.dump(dict_we_need)
+    
+    return True
 
 
 if __name__ == "__main__":
