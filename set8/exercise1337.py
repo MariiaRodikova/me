@@ -288,28 +288,28 @@ def fast_filler(number_of_words=200) -> str:
     it'll convert integer keys to strings.
     If you get this one to work, you are a Very Good Programmer™!
     """
-    #text =[]
-    #while len(text) < number_of_words:
-    python_object_dict = make_filler_text_dictionary()
-    fname = "dict_cache.json"
-    #while dict_we_need not in "set8/dict_cache.json":
-    if os.path.exists(fname): #check 
-        with open(fname, 'r') as file: #open it on reading mode
-            python_object_dict = json.load(file) 
-            to_put_in = random_filler_text(number_of_words)
+    text =[]
+    if os.path.isfile("set8/dict_cache.json"):  
+        file = open("set8/dict_cache.json", "r")
+        my_dictionary = json.load(file)
+        for i in range(number_of_words):
+            random_key = str(random.randint(3, 7))
+            random_index = random.randint(0, 3)
+            text.append(my_dictionary[random_key][random_index])
+        #with open(fname, 'r') as file: 
     else:
-        dict_we_need = make_filler_text_dictionary() 
-        with open(fname, 'w') as file:
-            python_object_dict = json.dump(dict_we_need, file)
-            python_object_dict = dict_we_need
-    text_here = []
-    for i in range(number_of_words):
-        #random_len = random.randint(3, 7)
-        length_bounds = len(python_object_dict)
-        random_key = random.randint(1,length_bounds) #random key from the dictionary
-        text_here.append(python_object_dict[random_key].capitalize() + '.') #formatting
-
-    return ' '.join(text_here)
+        my_dictionary = make_filler_text_dictionary() 
+        with open("./set8/dict_cache.json", "w") as file:
+            json.dump(my_dictionary, file, indent=4)
+    if text:
+        first_word = text[0]
+        first_word_list = list(first_word)
+        first_word_list[0] = first_word_list[0].upper()
+        text[0] = " ".join(first_word_list)
+        not_done = " ".join(text)
+    if not not_done.endswith("."):
+            not_done += "."
+    return not_done
 
 
 if __name__ == "__main__":
