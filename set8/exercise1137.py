@@ -156,9 +156,10 @@ def the_chain_gang_5(the_value) -> bool:
     TIP: you've already written a function that returns True if the value is 5
     TIP: you've already written a function that subtracts 5
     """
-    new_value = the_value - 5
+    new_value = take_five(the_value) #minus 5
+    super_new_value = is_it_5(new_value) #check whether it is 5 or it is not
 
-    return None
+    return super_new_value
 
 
 def pet_filter(letter="a") -> list:
