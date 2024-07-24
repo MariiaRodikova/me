@@ -177,8 +177,8 @@ def pet_filter(letter="a") -> list:
         "fancy rat and lab rat", "mink", "red fox", "hedgehog", "guppy"
     ]
     # fmt: on
-    filtered = [pet for pet in pets if letter in pets]
-    return pets[filtered]
+    filtered = [pet for pet in pets if letter in pet]
+    return filtered
 
 
 def best_letter_for_pets() -> str:
