@@ -98,7 +98,7 @@ def fizz_buzz() -> list:
 
     This is the most famous basic programming test of all time!
 
-       "Write a program that prints the numbers from 1 to 100. But for
+        "Write a program that prints the numbers from 1 to 100. But for
         multiples of three print "Fizz" instead of the number and for
         the multiples of five print "Buzz". For numbers which are
         multiples of both three and five print "FizzBuzz"."
@@ -135,12 +135,15 @@ def set_it_on_fire(input_string="very naughty boy") -> str:
     e.g. "very naughty boy" should return the string
     "🔥V🔥E🔥R🔥Y🔥 🔥N🔥A🔥U🔥G🔥H🔥T🔥Y🔥 🔥B🔥O🔥Y🔥"
     TIP: strings are pretty much lists of chars.
-         If you list("string") you get ['s', 't', 'r', 'i', 'n', 'g']
+        If you list("string") you get ['s', 't', 'r', 'i', 'n', 'g']
     TIP: consider using the 'join' method in Python.
     TIP: make sure that you have a 🔥 on both ends of the string.
     """
+    input_string = input_string.upper()
+    fire_list = ['🔥' + letter + '🔥' for letter in input_string]
+    this_answer = ''.join(fire_list)
 
-    return None
+    return this_answer
 
 
 def the_chain_gang_5(the_value) -> bool:
@@ -153,6 +156,7 @@ def the_chain_gang_5(the_value) -> bool:
     TIP: you've already written a function that returns True if the value is 5
     TIP: you've already written a function that subtracts 5
     """
+    new_value = the_value - 5
 
     return None
 
